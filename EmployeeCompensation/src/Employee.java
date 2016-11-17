@@ -1,0 +1,55 @@
+//Employee Class
+
+ public abstract class Employee{
+	
+	//Variables
+	int ID;
+	int year;
+	double salary;
+	double compensation;
+	
+	//Employee Constructor
+	public Employee(int iD, int year, double salary, double compensation) {
+		super();
+		ID = iD;
+		this.year = year;
+		this.salary = salary;
+		this.compensation = compensation;
+	}
+
+	//Setters
+	public void setID(int iD) {
+		ID = iD;
+	}
+	public void setYear(int year) {
+		this.year = year;
+	}
+	public void setSalary(double salary) {
+		this.salary = salary;
+	}
+	public void setCompensation(double compensation) {
+		this.compensation = compensation;
+	}
+	
+	//Getters
+	public int getID() {
+		return ID;
+	}
+	public int getYear() {
+		return year;
+	}
+	public double getSalary() {
+		return salary;
+	}
+	public double getCompensation() {
+		return compensation;
+	}
+	
+	
+	//toString method - displays employee’s ID, year hired, salary, & compensation 
+	public String toString() {
+		return "Employee [ID=" + ID + ", year=" + year + ", salary=" + salary + ", compensation=" + compensation + "]";
+	}
+	
+	
+}

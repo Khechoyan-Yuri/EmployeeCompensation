@@ -1,0 +1,7 @@
+public class MainProgram{
+	public void main(String[] args){
+		
+		
+		
+	}//Closes main method
+}//Closes MainProgram class

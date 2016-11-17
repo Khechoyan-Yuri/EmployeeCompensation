@@ -1,0 +1,7 @@
+//EmployeeCompensation
+
+public class EmployeeCompensation extends Employee{
+	
+	//Variables
+}
+

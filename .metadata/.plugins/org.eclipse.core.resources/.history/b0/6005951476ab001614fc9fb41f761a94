@@ -1,0 +1,5 @@
+//Senior class
+
+public class SeniorEmployee extends Employee{
+	double annualBonus;
+}

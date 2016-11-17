@@ -1,0 +1,5 @@
+//Junior class
+
+public class JuniorEmployee extends Employee{
+	
+}

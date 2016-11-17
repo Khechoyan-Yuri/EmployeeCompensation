@@ -1,0 +1,9 @@
+//Junior class
+
+public class JuniorEmployee extends Employee{
+	
+	//Variables
+	double juniorCommission;
+	
+	setJuniorCommission();
+}

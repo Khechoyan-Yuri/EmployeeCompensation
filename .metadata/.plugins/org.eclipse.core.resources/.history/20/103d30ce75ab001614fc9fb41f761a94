@@ -1,0 +1,12 @@
+//Employee Class
+
+ protected abstract class Employee{
+	int ID;
+	int year;
+	double salary;
+	double compensation;
+	
+	getID();
+	getYear();
+	
+}

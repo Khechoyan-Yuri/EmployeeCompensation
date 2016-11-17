@@ -1,0 +1,5 @@
+//Manager class
+
+public class Manager extends Employee{
+	
+}

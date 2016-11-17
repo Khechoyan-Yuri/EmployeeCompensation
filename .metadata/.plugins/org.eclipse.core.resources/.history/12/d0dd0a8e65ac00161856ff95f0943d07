@@ -1,0 +1,14 @@
+//Employee Class
+
+ protected class Employee{
+	
+	 //Variables
+	int ID;
+	int year;
+	double salary;
+	double compensation;
+	
+	getID();
+	getYear();
+	
+}

@@ -1,0 +1,40 @@
+//Employee Class
+
+ public abstract class Employee{
+	
+	 //Variables
+	int ID;
+	int year;
+	double salary;
+	double compensation;
+	
+	public void setID(int iD) {
+		ID = iD;
+	}
+	public int getID() {
+		return ID;
+	}
+	
+	public int getYear() {
+		return year;
+	}
+	public void setYear(int year) {
+		this.year = year;
+	}
+	public double getSalary() {
+		return salary;
+	}
+	public void setSalary(double salary) {
+		this.salary = salary;
+	}
+	public double getCompensation() {
+		return compensation;
+	}
+	public void setCompensation(double compensation) {
+		this.compensation = compensation;
+	}
+	
+	//setters and getters
+	
+	
+}
