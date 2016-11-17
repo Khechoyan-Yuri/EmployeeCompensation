@@ -21,7 +21,7 @@ public class JuniorEmployee extends Employee{
 		return juniorCommission;
 	}
 
-	//toString method - displays employee’s ID, year hired, salary, & JuniorCommission
+	//toString method - displays employee’s ID, year hired, salary, & juniorCommission
 	@Override
 	public String toString() {
 		return "JuniorEmployee [juniorCommission=" + juniorCommission + ", ID=" + ID + ", year=" + year + "]";

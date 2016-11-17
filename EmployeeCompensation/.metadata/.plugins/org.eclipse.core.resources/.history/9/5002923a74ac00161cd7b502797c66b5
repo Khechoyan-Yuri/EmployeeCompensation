@@ -21,7 +21,7 @@ public class Manager extends Employee{
 		return stockDividend;
 	}
 
-	//toString method - displays employee’s ID, year hired, & stockDividend
+	//toString method - displays employee’s ID, year hired, & annualBonus
 	@Override
 	public String toString() {
 		return "Manager [stockDividend=" + stockDividend + ", ID=" + ID + ", year=" + year + "]";
