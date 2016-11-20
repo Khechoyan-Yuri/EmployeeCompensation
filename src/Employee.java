@@ -1,55 +1,56 @@
 //Employee Class
 
- public abstract class Employee{
-	
-	//Variables
-	int ID;
-	int year;
-	double salary;
-	double compensation;
-	
-	//Employee Constructor
-	public Employee(int iD, int year, double salary, double compensation) {
-		super();
-		ID = iD;
-		this.year = year;
-		this.salary = salary;
-		this.compensation = compensation;
+ public class Employee{
+	 
+	 protected int ID;
+	 protected int year;
+	 protected double salary;
+	 protected double compensation;
+	 protected double totalCompensation;
+	 protected String employeeSummary;
+	 public Employee() {
+			ID = 0;
+			year = 0;
+			salary = 0;
+			totalCompensation = 0;
 	}
-
-	//Setters
-	public void setID(int iD) {
-		ID = iD;
+	 public void setID(int userID) {
+			ID = userID;
 	}
-	public void setYear(int year) {
-		this.year = year;
+	 public void setYearHired(int YearHired) {
+			year = YearHired;
 	}
-	public void setSalary(double salary) {
-		this.salary = salary;
+	 public void setBaseSalary(double BaseSalary) {
+			salary = BaseSalary;
 	}
-	public void setCompensation(double compensation) {
-		this.compensation = compensation;
+	 public void setCompensation(double Compensation) {
+			compensation = Compensation;
 	}
-	
-	//Getters
-	public int getID() {
-		return ID;
+	 public void setTotalCompensation(double TotalCompensation) {
+			totalCompensation = TotalCompensation;
 	}
-	public int getYear() {
-		return year;
+	 public int getID() {
+			return ID;
 	}
-	public double getSalary() {
-		return salary;
+	 public int getYearHired() {
+			return year;
 	}
-	public double getCompensation() {
-		return compensation;
+	 public double getBaseSalary() {
+			return salary;
 	}
-	
-	
-	//toString method - displays employee’s ID, year hired, salary, & compensation 
-	public String toString() {
-		return "Employee [ID=" + ID + ", year=" + year + ", salary=" + salary + ", compensation=" + compensation + "]";
+	 public double getCompensation() {
+			return compensation;
 	}
-	
-	
-}
+	 public double getTotalCompensation() {
+			return totalCompensation;
+	}
+	 public String EmployeeSummary() {
+			return getID() +"\t"+getYearHired()+"\t"+getBaseSalary()+"\t"+getCompensation();
+	}
+	 public String toString() {
+			return ID +" "+ year +" "+ salary +" "+ totalCompensation;
+	}
+	 public String EndingSummary() {
+			return "null";
+	}
+}//Closes Employee Class
