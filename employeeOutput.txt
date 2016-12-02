@@ -1,0 +1,44 @@
+ID	YEAR HIRED	TITLE		BASE SALARY	COMPENSATION
+1	1963		Senior		$90,000.00		$110,000.00
+This is a senior employee. ID is 1, hired since 1963, and annual bonus is $20,000.00.
+2	1970		Senior		$100,000.00		$125,000.00
+This is a senior employee. ID is 2, hired since 1970, and annual bonus is $25,000.00.
+3	1972		Manager		$100,000.00		$165,000.00
+This is a manager. ID is 3, hired since 1972, and stock dividend is $65,000.00.
+4	1968		Senior		$100,000.00		$160,000.00
+This is a senior employee. ID is 4, hired since 1968, and annual bonus is $60,000.00.
+5	1999		Senior		$70,000.00		$90,000.00
+This is a senior employee. ID is 5, hired since 1999, and annual bonus is $20,000.00.
+6	1992		Senior		$70,000.00		$95,000.00
+This is a senior employee. ID is 6, hired since 1992, and annual bonus is $25,000.00.
+7	1974		Manager		$100,000.00		$300,000.00
+This is a manager. ID is 7, hired since 1974, and stock dividend is $200,000.00.
+8	1995		Senior		$70,000.00		$100,000.00
+This is a senior employee. ID is 8, hired since 1995, and annual bonus is $30,000.00.
+9	2001		Senior		$70,000.00		$80,000.00
+This is a senior employee. ID is 9, hired since 2001, and annual bonus is $10,000.00.
+10	1996		Senior		$80,000.00		$95,000.00
+This is a senior employee. ID is 10, hired since 1996, and annual bonus is $15,000.00.
+11	1999		Senior		$50,000.00		$60,000.00
+This is a senior employee. ID is 11, hired since 1999, and annual bonus is $10,000.00.
+12	2000		Junior		$50,000.00		$55,000.00
+This is a junior employee. ID is 12, hired since 2000, and commission is $5,000.00.
+13	1980		Manager		$80,000.00		$100,000.00
+This is a manager. ID is 13, hired since 1980, and stock dividend is $20,000.00.
+14	2012		Junior		$50,000.00		$51,000.00
+This is a junior employee. ID is 14, hired since 2012, and commission is $1,000.00.
+15	2012		Junior		$50,000.00		$52,000.00
+This is a junior employee. ID is 15, hired since 2012, and commission is $2,000.00.
+16	2007		Manager		$70,000.00		$85,000.00
+This is a manager. ID is 16, hired since 2007, and stock dividend is $15,000.00.
+17	1940		Manager		$100,000.00		$300,000.00
+This is a manager. ID is 17, hired since 1940, and stock dividend is $200,000.00.
+-------------------------------------
+
+Employee 3 is a manager. Dividend is $65,000.00!
+Employee 7 is a manager. Dividend is $200,000.00!
+Employee 13 is a manager. Dividend is $20,000.00!
+Employee 16 is a manager. Dividend is $15,000.00!
+Employee 17 is a manager. Dividend is $200,000.00!
+
+Goodbye.

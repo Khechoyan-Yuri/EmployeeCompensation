@@ -1,7 +1,4 @@
 /* ========================================================================== */
-
-
-
 /*	PROGRAM Employee Compensation
 
     AUTHOR: Yuri Khechoyan
@@ -14,15 +11,11 @@
 SUMMARY
 
 	This program is designed to read in a csv file.
-	It will ask the user to enter the name of the document that
-	the user wishes to import. 
-	If the file does not exist, program will give the user an error and then
-	terminate itself. If the file that user imports does exist, program will
-	proceed to accomplish the following:	
-	The list of tasks that this program is designed to do:
+	The program will already know the name of the file. It will 
+	start importing the data from the file and proceed with its purpose. 	
+	The list of tasks that this program is designed to do...
 
 	Separate:
-
 	-Employee ID Number
 	-Year Employee was Hired
 	-Employee's Occupation Title
@@ -49,9 +42,6 @@ INPUT
 
 	The input for this program will be a text file appropriately titled:
 	--'Employees.csv'--
-
-	In order for this program to work, it must read in the file. If reading in the file fails,
-	the program will throw an error to the user and self-terminate.
 	
 OUTPUT
 
@@ -72,17 +62,18 @@ OUTPUT
 	14         2012       Junior       $50,000        $51,000 
 	This is a junior employee. ID is 14, hired since 2012, and commission is $1,000.  
  
- 	___________________________________________________________________________________
+ ------------------------------------------------------------------------------------
  
 	Employee 13 is a manager. Dividend is $20,000! 
  
 	Good bye!
 
 
-
 ASSUMPTIONS
 
-- None
+- Program assumes that the file is already in the correct location. 
+- The program assumes that the file exists and is inside of the project folder
+- but outside of the source folder
 
 */
 
@@ -90,15 +81,178 @@ ASSUMPTIONS
 //*START OF MainProgram CLASS	*
 //*******************************
 
-import java.io.*;
-import java.util.Scanner;
-import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Scanner;												//Imports Scanner Utility
+import java.io.*;														//Imports File IO
+import java.util.ArrayList;												//Imports ArrayList Utility
 
 public class MainProgram{
-	public void main(String[] args){
+	public static void main(String[] args) throws IOException{
 		
+		//Ask and receive file name from User
+		System.out.println("Enter the name of the file: ");
+		Scanner keyboard = new Scanner(System.in);
+		keyboard.nextLine();
+		keyboard.close();
 		
+		//MainProgran only used to Read in Data, 
+		//initialize Selection Sort, and print to console/file
+		ArrayList<Employee> obj1 = ReadInputData("Employees.csv");
+		ArrayList<Employee> obj2 = SelectionSort(obj1);
+		PrintManagerDividend(obj2, "employeeOutput.txt");	
+	}//Closes Main Method
+//=======================================================================
+	
+	//*********************
+	// METHOD DEFINITIONS *
+	//*********************
+	
+	/**
+	 * ReadInputData method that creates the counter for number of lines
+	 * Closes the object when program finishes
+	 * @param fileName
+	 * @return
+	 * @throws IOException
+	 */
+	public static ArrayList<Employee> ReadInputData(String fileName) throws IOException{
+		int numOfLines = 0;
+		File file = new File(fileName);	
 		
-	}//Closes Main method
+		Scanner fileCount = new Scanner(file);
+		Scanner fileInput = new Scanner(file);
+		
+		//Add to fileCount counter while a line is read
+		while(fileCount.hasNextLine()){
+			fileCount.nextLine();
+			numOfLines++;
+		}
+		//Closes fileCount object
+		fileCount.close();
+		
+		//Create a string array for numOfLines
+		String [] stringArray = new String[numOfLines];
+		int i = 0;
+		
+		//Add to fileInput counter while file has another line
+		while(fileInput.hasNextLine()){
+			stringArray[i] = fileInput.nextLine();
+			i++;
+		}
+		//Closes fileInput object
+		fileInput.close();
+		//Creates a 2nd ArrayList inside of the Employee ArrayList called employeeClass
+		ArrayList<Employee> employeeClass = new ArrayList<Employee>();
+		
+		//Loops through and reads in all employees data, separates data by comma separation
+		for(i=1; i<stringArray.length; i++){
+			//Organizes string elements into sub strings based 
+			//on what each employee is classified as 
+			String [] employeeRecord = stringArray[i].split("[,]");
+			
+			//if element is of Junior status
+			if(employeeRecord[2].equals(" Junior")){
+				employeeClass.add(new JuniorEmployee(Integer.parseInt(employeeRecord[0]),
+					Integer.parseInt(employeeRecord[1]),
+					Double.parseDouble(employeeRecord[3]),
+					Double.parseDouble(employeeRecord[4])));
+			}
+			//if element is of Senior status
+			else if(employeeRecord[2].equals(" Senior")){
+				employeeClass.add(new SeniorEmployee(Integer.parseInt(employeeRecord[0]),
+					Integer.parseInt(employeeRecord[1]),
+					Double.parseDouble(employeeRecord[3]),
+					Double.parseDouble(employeeRecord[4])));
+			}
+			//if element is of Manager status
+			else if(employeeRecord[2].equals(" Manager")){			
+				employeeClass.add(new Manager(Integer.parseInt(employeeRecord[0]),
+					Integer.parseInt(employeeRecord[1]),
+					Double.parseDouble(employeeRecord[3]),
+					Double.parseDouble(employeeRecord[4])));
+			}
+		}//Closes for Loop
+		
+		return employeeClass;
+	}//Closes ReadInputData Method
+//======================================================================================
+	
+	/**
+	 * Reads in the EmployeeList and associates related elements with ID number
+	 * @param employeeList
+	 * @return
+	 */
+	public static ArrayList<Employee> SelectionSort(ArrayList<Employee> employeeList){
+		 int startScan, index, minIndex;
+		 Employee minValue = new Employee();
+		 for (startScan = 0; startScan < (employeeList.size()-1); startScan++){
+		     minIndex = startScan;
+		     minValue = (employeeList.get(startScan));         
+		     
+		     //Organizes information from SelectionSort method in numerical ascending order   
+		     for(index = startScan + 1; index < employeeList.size(); index++){
+		    	 if (employeeList.get(index).getID() < minValue.getID()){
+		          minValue = employeeList.get(index);
+		          minIndex = index;
+		    	 }
+		     }//Closes 2nd for loop
+
+		         //Replaces minIndex value with the startIndex value
+		         employeeList.remove(minIndex);
+		         employeeList.add(minIndex,employeeList.get(startScan));
+		         employeeList.remove(startScan);
+		         employeeList.add(startScan, minValue);
+		 }//Closes large for loop
+		 
+		 return employeeList;
+	}//Closes SelectionSort Method
+//========================================================================================
+	
+	/**
+	 * Output all of the relevant Information out to the employeeOutput.txt file 
+	 * @param employeeList
+	 * @param fileName
+	 * @throws IOException
+	 */
+	public static void PrintManagerDividend(ArrayList<Employee> employeeList, String fileName) throws IOException{
+		//Creates PrintWriter object to Output to File
+		PrintWriter fileOutput = new PrintWriter(fileName);
+		//Prints out Header
+		fileOutput.println("ID\tYEAR HIRED\tTITLE\t\tBASE SALARY\tCOMPENSATION");	
+		//Print out all Information that was separated by commas
+		for(int i=0; i<employeeList.size(); i++) {
+			fileOutput.printf(employeeList.get(i).EmployeeSummary());
+			fileOutput.printf(employeeList.get(i).toString());
+		}		
+		//Prints out Dividing Line
+		fileOutput.println("-------------------------------------\r\n");
+		//Find and Print out All Manager Employees
+		for(int i=0; i<employeeList.size(); i++) {
+			if(!(employeeList.get(i).EndingSummary().equals("null"))) {
+				fileOutput.printf(employeeList.get(i).EndingSummary());
+			}
+		}
+		fileOutput.println("\r\nGoodbye.");	
+		//Closes fileOutPut object
+		fileOutput.close();
+//------------------------------------------------------------------------
+		
+		/**
+		 * Outputs identical information onto the console
+		 */
+		//Prints out Header
+		System.out.println("ID\tYEAR_HIRED\tTITLE\t\tBASE_SALARY\t\tCOMPENSATION");	
+		//Print out all Information that was separated by commas
+		for(int i=0; i<employeeList.size(); i++) {
+			System.out.println(employeeList.get(i).EmployeeSummary());
+			System.out.println(employeeList.get(i).toString());
+		}	
+		//Prints out Dividing Line
+		System.out.println("----------------------------------------------\n");
+		//Find and Print out All Manager Employees
+		for(int i=0; i<employeeList.size(); i++) {
+			if(!(employeeList.get(i).EndingSummary().equals("null"))) {
+				System.out.println(employeeList.get(i).EndingSummary());
+			}
+		}
+		System.out.println("\nGoodbye.");		
+	}//Closes PrintManagerDividend Method
 }//Closes MainProgram class

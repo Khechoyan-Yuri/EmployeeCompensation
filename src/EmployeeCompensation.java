@@ -2,27 +2,12 @@
 
 public interface EmployeeCompensation{
 
-	/*Design an Interface named EmployeeCompensation. 
-	It has one methods: CalculateTotalCompensation() 
-	which returns the total compensation. 
-	JuniorEmployee, SeniorEmployee, and Manager classes 
-	MUST implement this Interface.  
+	/**
+	 * JuniorEmployee’s total compensation is baseSalary + commission | (inside JuniorEmployee Class)
+	 * SeniorEmployee’s total compensation is baseSalary + annualBonus | (inside SeniorEmployee Class)
+	 * Manager’s total compensation is baseSalary + stockDividend| (inside Manager Class)
+	 */
 	
-	o JuniorEmployee’s total compensation is baseSalary + commission 
-	o SeniorEmployee’s total compensation is baseSalary + annualBonus  
-	o Manager’s total compensation is baseSalary + dividend 
-	*/
-	
-	default double CalculateTotalCompensation(double salary, 
-			double JuniorCommission, double annualBonus, 
-			double stockDividend, double totalCompensation){
-		
-			double juniorPay = salary + JuniorCommission;
-			double seniorPay = salary + annualBonus;
-			double managerPay = salary + stockDividend;
-		
-		return totalCompensation;
-		
-	}
-}
-
+	//CalculateTotalCompensation Method
+	public double CalculateTotalCompensation();
+}//Closes EmployeeCompensation interface
